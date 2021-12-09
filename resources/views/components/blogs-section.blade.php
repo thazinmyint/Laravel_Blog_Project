@@ -21,13 +21,15 @@
         <option value="">Filter by Tag</option>
       </select> --}}
     </div>
-    <form action="" class="my-3">
+    <form action="" class="my-3"x>
       <div class="input-group mb-3">
         <input
-          type="text"
-          autocomplete="false"
-          class="form-control"
-          placeholder="Search Blogs..."
+            name="search"
+            type="text"
+            value="{{request('search')}}"
+            autocomplete="false"
+            class="form-control"
+            placeholder="Search Blogs..."
         />
         <button
           class="input-group-text bg-primary text-light"
@@ -39,11 +41,13 @@
       </div>
     </form>
     <div class="row">
-        @foreach ($blogs as $blog)
+
+        @forelse ($blogs as $blog)
             <div class="col-md-4 mb-4">
                 <x-blog-card :blog='$blog'/>
             </div>
-        @endforeach
+        @empty
+            <p class="text-center">No Blogs Found</p>
+        @endforelse
 
-    </div>
-  </section>
+    </div> </section>
