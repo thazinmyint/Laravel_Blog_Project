@@ -1,22 +1,11 @@
 {{-- @dd($blogs) --}}
-@props(['blogs','categories','currentCategory
-'])
+@props(['blogs'])
 {{-- @dd($categories) --}}
 
 <section class="container text-center" id="blogs">
     <h1 class="display-5 fw-bold mb-4">Blogs</h1>
     <div class="">
-        <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              {{ isset($currentCategory) ? $currentCategory->name : 'Filter By Category'}}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              @foreach ($categories as $category)
-                <li><a class="dropdown-item" href="/?category={{$category->slug}}">{{$category->name}}</a></li>
-              @endforeach
-
-            </ul>
-        </div>
+        <x-category-dropdown />
       {{-- <select name="" id="" class="p-1 rounded-pill mx-3">
         <option value="">Filter by Tag</option>
       </select> --}}
